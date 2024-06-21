@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/binding/anniversary_binding.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/views/anniversary_homeview.dart';
+import 'package:invitation_maker/app/modules/binding/home_view_binding.dart';
 import 'package:invitation_maker/app/modules/birthday_invite/binding/birthday_invite_binding.dart';
 import 'package:invitation_maker/app/modules/birthday_invite/views/birthday_invite_home.dart';
 import 'package:invitation_maker/app/modules/engagement_card/binding/engagement_card_binding.dart';
@@ -12,8 +13,8 @@ import 'package:invitation_maker/app/modules/party_card/views/party_card_home.da
 import 'package:invitation_maker/app/modules/splash_screen.dart/binding/splash_binding.dart';
 import 'package:invitation_maker/app/modules/splash_screen.dart/view/splash_screen.dart';
 import 'package:invitation_maker/app/modules/views/home_view.dart';
-import 'package:invitation_maker/app/modules/web_scrapper_testing/binding/web_scrapper_binding.dart';
-import 'package:invitation_maker/app/modules/web_scrapper_testing/views/web_scrapper_view.dart';
+// import 'package:invitation_maker/app/modules/web_scrapper_testing/binding/web_scrapper_binding.dart';
+// import 'package:invitation_maker/app/modules/web_scrapper_testing/views/web_scrapper_view.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/binding/wedding_invite_binding.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/views/wedding_invite_home.dart';
 
@@ -28,7 +29,7 @@ class AppPages {
     GetPage(
       name: _Paths.HOMEVIEW,
       page: () => HomeView(),
-      // binding: (),
+      binding: HomeViewBinding(),
     ),
     GetPage(
       name: _Paths.WEDDINGINVITEHOME,
@@ -65,10 +66,10 @@ class AppPages {
       page: () => SplashScreen(),
       binding: SplashBinding(),
     ),
-    GetPage(
-      name: _Paths.WEBSCRAPER,
-      page: () => WebScraper(),
-      binding: WebScrapperBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.WEBSCRAPER,
+    //   page: () => WebScraper(),
+    //   binding: WebScrapperBinding(),
+    // ),
   ];
 }

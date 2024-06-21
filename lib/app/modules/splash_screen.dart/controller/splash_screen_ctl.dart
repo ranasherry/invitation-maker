@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/routes/app_pages.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,7 +19,7 @@ class SplashController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    // AppLovinProvider.instance.init();
+    AppLovinProvider.instance.init();
     // MetaAdsProvider.instance.initialize();
     Timer? timer;
     timer = Timer.periodic(Duration(milliseconds: 500), (_) {

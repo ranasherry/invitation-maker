@@ -12,7 +12,7 @@ abstract class Routes {
   static const PARTYCARDHOME = _Paths.PARTYCARDHOME;
   static const ENGAGEMENTCARD = _Paths.ENGAGEMENTCARD;
   static const SPLASHSCREEN = _Paths.SPLASHSCREEN;
-  static const WEBSCRAPER = _Paths.WEBSCRAPER;
+  // static const WEBSCRAPER = _Paths.WEBSCRAPER;
 }
 
 abstract class _Paths {
@@ -24,5 +24,5 @@ abstract class _Paths {
   static const PARTYCARDHOME = '/PARTYCARDHOME';
   static const ENGAGEMENTCARD = '/ENGAGEMENTCARD';
   static const SPLASHSCREEN = '/SPLASHSCREEN';
-  static const WEBSCRAPER = '/WEBSCRAPER';
+  // static const WEBSCRAPER = '/WEBSCRAPER';
 }

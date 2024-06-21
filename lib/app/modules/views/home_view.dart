@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/routes/app_pages.dart';
 import 'package:invitation_maker/app/utills/images.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<HomeViewCTL> {
   const HomeView({super.key});
 
   @override
@@ -95,7 +95,7 @@ class HomeView extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(Routes.WEBSCRAPER);
+                    // Get.toNamed(Routes.WEBSCRAPER);
                   },
                   child: cards_template(
                       Color(0xFF7E51FF),
