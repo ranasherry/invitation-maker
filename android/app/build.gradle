@@ -83,4 +83,7 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'com.applovin:applovin-sdk:+'
+    implementation 'com.applovin.mediation:facebook-adapter:+'
+}
