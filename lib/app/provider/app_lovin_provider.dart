@@ -3,8 +3,10 @@ import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:invitation_maker/app/utills/app_strings.dart';
+import 'package:invitation_maker/app/utills/size_config.dart';
 
 class AppLovinProvider {
   AppLovinProvider._privateConstructor();
@@ -32,29 +34,21 @@ class AppLovinProvider {
   var isProgrammaticMRecShowing = false;
   var isWidgetMRecShowing = false;
 
-  RxBool isAdsEnabled = false.obs;
-
   void init() {
     if (kReleaseMode) {
       initializePlugin();
-    }
-
-    if (Platform.isIOS) {
-      isAdsEnabled.value = false;
-    } else {
-      isAdsEnabled.value = true;
     }
   }
 
   Future<void> initializePlugin() async {
     print("Initializing SDK...");
-    if (!isAdsEnabled.value) return;
+
     MaxConfiguration? configuration = await AppLovinMAX.initialize(_sdk_key);
     if (configuration != null) {
       isInitialized.value = true;
 
       print("SDK Initialized: $configuration");
-      AppLovinMAX.setVerboseLogging(false);
+      AppLovinMAX.setVerboseLogging(kDebugMode);
 
       attachAdListeners();
       AppLovinMAX.loadInterstitial(_interstitial_ad_unit_id);
@@ -68,46 +62,6 @@ class AppLovinProvider {
   }
 
   void attachAdListeners() {
-    // AppLovinMAX.setRewardedAdListener(
-    //     RewardedAdListener(onAdLoadedCallback: (ad) {
-    //   rewardedAdLoadState = AdLoadState.loaded;
-
-    //   // Rewarded ad is ready to be shown. AppLovinMAX.isRewardedAdReady(_rewarded_ad_unit_id) will now return 'true'
-    //   print('Rewarded ad loaded from ${ad.networkName}');
-
-    //   // Reset retry attempt
-    //   rewardedAdRetryAttempt = 0;
-    // }, onAdLoadFailedCallback: (adUnitId, error) {
-    //   rewardedAdLoadState = AdLoadState.notLoaded;
-
-    //   // Rewarded ad failed to load
-    //   // We recommend retrying with exponentially higher delays up to a maximum delay (in this case 64 seconds)
-    //   rewardedAdRetryAttempt = rewardedAdRetryAttempt + 1;
-
-    //   int retryDelay = pow(2, min(6, rewardedAdRetryAttempt)).toInt();
-    //   print(
-    //       'Rewarded ad failed to load with code ${error.code} - retrying in ${retryDelay}s');
-
-    //   Future.delayed(Duration(milliseconds: retryDelay * 1000), () {
-    //     AppLovinMAX.loadRewardedAd(AppStrings.MAX_Reward_ID);
-    //   });
-    // }, onAdDisplayedCallback: (ad) {
-    //   print('Rewarded ad displayed');
-    // }, onAdDisplayFailedCallback: (ad, error) {
-    //   rewardedAdLoadState = AdLoadState.notLoaded;
-    //   print(
-    //       'Rewarded ad failed to display with code ${error.code} and message ${error.message}');
-    // }, onAdClickedCallback: (ad) {
-    //   print('Rewarded ad clicked');
-    // }, onAdHiddenCallback: (ad) {
-    //   rewardedAdLoadState = AdLoadState.notLoaded;
-    //   print('Rewarded ad hidden');
-    // }, onAdReceivedRewardCallback: (ad, reward) {
-    //   print('Rewarded ad granted reward');
-    // }, onAdRevenuePaidCallback: (ad) {
-    //   print('Rewarded ad revenue paid: ${ad.revenue}');
-    // }));
-
     /// Interstitial Ad Listeners
     AppLovinMAX.setInterstitialListener(InterstitialListener(
       onAdLoadedCallback: (ad) {
@@ -202,7 +156,6 @@ class AppLovinProvider {
   }
 
   void showInterstitial(Function onInterAdWatched) async {
-    if (!isAdsEnabled.value) return;
     // if(Platform.isIOS && isInitialized.value){
     //   print(object)
     //   return;
@@ -285,42 +238,60 @@ class AppLovinProvider {
     AppLovinMAX.showInterstitial(_interstitial_ad_unit_id);
   }
 
-  //reward AD
+  Widget ShowBannerWidget() {
+    return Container(
+      // height: 60,
+      // color: Colors.amber,
+      margin: EdgeInsets.symmetric(vertical: SizeConfig.blockSizeVertical),
+      child: Align(
+        alignment: Alignment.center,
+        child: MaxAdView(
+            adUnitId: AppStrings.MAX_BANNER_ID,
+            adFormat: AdFormat.banner,
+            listener: AdViewAdListener(onAdLoadedCallback: (ad) {
+              print('Banner widget ad loaded from ' + ad.networkName);
+            }, onAdLoadFailedCallback: (adUnitId, error) {
+              print('Banner widget ad failed to load with error code ' +
+                  error.code.toString() +
+                  ' and message: ' +
+                  error.message);
+            }, onAdClickedCallback: (ad) {
+              print('Banner widget ad clicked');
+            }, onAdExpandedCallback: (ad) {
+              print('Banner widget ad expanded');
+            }, onAdCollapsedCallback: (ad) {
+              print('Banner widget ad collapsed');
+            })),
+      ),
+    );
+  }
 
-  // void showRewardedAd(Function onRewardedAdWatched) async {
-  //   if (!isAdsEnabled.value) return;
-  //   bool isReady =
-  //       await AppLovinMAX.isRewardedAdReady(AppStrings.MAX_Reward_ID) ?? false;
-  //   if (isReady) {
-  //     AppLovinMAX.showRewardedAd(AppStrings.MAX_Reward_ID);
-  //   } else {
-  //     print('Loading rewarded ad...');
-  //     rewardedAdLoadState = AdLoadState.loading;
-  //     AppLovinMAX.loadRewardedAd(AppStrings.MAX_Reward_ID);
-  //   }
-
-  //   AppLovinMAX.setRewardedAdListener(RewardedAdListener(
-  //     onAdLoadedCallback: (ad) {
-  //       rewardedAdLoadState = AdLoadState.loaded;
-  //       print('Rewarded ad loaded from ${ad.networkName}');
-  //       rewardedAdRetryAttempt = 0;
-  //     },
-  //     onAdDisplayedCallback: (ad) {
-  //       print('Rewarded ad displayed');
-  //     },
-  //     onAdHiddenCallback: (ad) {
-  //       rewardedAdLoadState = AdLoadState.notLoaded;
-  //       print('Rewarded ad hidden');
-  //       // Invoke the onRewardedAdWatched function when the rewarded ad is hidden
-  //       onRewardedAdWatched();
-  //       // temp();
-  //     },
-  //     onAdLoadFailedCallback: (String adUnitId, MaxError error) {},
-  //     onAdDisplayFailedCallback: (MaxAd ad, MaxError error) {},
-  //     onAdReceivedRewardCallback: (MaxAd ad, MaxReward reward) {},
-  //     onAdClickedCallback: (MaxAd ad) {},
-  //   ));
-  // }
+  Widget showMrecWidget() {
+    return Container(
+      // height: 60,
+      // color: Colors.amber,
+      child: Align(
+        alignment: Alignment.center,
+        child: MaxAdView(
+            adUnitId: AppStrings.MAX_MREC_ID,
+            adFormat: AdFormat.mrec,
+            listener: AdViewAdListener(onAdLoadedCallback: (ad) {
+              print('Banner widget ad loaded from ' + ad.networkName);
+            }, onAdLoadFailedCallback: (adUnitId, error) {
+              print('Banner widget ad failed to load with error code ' +
+                  error.code.toString() +
+                  ' and message: ' +
+                  error.message);
+            }, onAdClickedCallback: (ad) {
+              print('Banner widget ad clicked');
+            }, onAdExpandedCallback: (ad) {
+              print('Banner widget ad expanded');
+            }, onAdCollapsedCallback: (ad) {
+              print('Banner widget ad collapsed');
+            })),
+      ),
+    );
+  }
 
   temp() {
     print("Rewarded Temp");
