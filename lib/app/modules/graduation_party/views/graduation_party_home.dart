@@ -8,6 +8,7 @@ import 'package:invitation_maker/app/modules/graduation_party/views/g_template_3
 import 'package:invitation_maker/app/modules/graduation_party/views/g_template_4.dart';
 import 'package:invitation_maker/app/modules/graduation_party/views/g_template_5.dart';
 import 'package:invitation_maker/app/modules/graduation_party/views/g_template_6.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:widget_screenshot/widget_screenshot.dart';
@@ -87,6 +88,8 @@ class GraduationPartyeHome extends GetView<GraduationPartyCTL> {
                 child: Container(
                   child: Column(
                     children: [
+                     
+
                       Container(
                           height: SizeConfig.screenHeight * 0.7,
                           child: WidgetShot(
@@ -213,6 +216,8 @@ class GraduationPartyeHome extends GetView<GraduationPartyCTL> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
+                      AppLovinProvider.instance.ShowBannerWidget(),
+
             // Groom Name Input
             verticalSpace(SizeConfig.blockSizeVertical * 2),
             Container(

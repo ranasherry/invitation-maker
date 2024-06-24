@@ -8,6 +8,7 @@ import 'package:invitation_maker/app/modules/wedding_invite/views/w_template_3.d
 import 'package:invitation_maker/app/modules/wedding_invite/views/w_template_4.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/views/w_template_5.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/views/w_template_6.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:widget_screenshot/widget_screenshot.dart';

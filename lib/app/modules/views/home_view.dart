@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/routes/app_pages.dart';
 import 'package:invitation_maker/app/utills/images.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
@@ -33,6 +34,8 @@ class HomeView extends GetView<HomeViewCTL> {
       ),
       body: Column(
         children: [
+          AppLovinProvider.instance.ShowBannerWidget(),
+          // verticalSpace(SizeConfig.blockSizeVertical),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -41,6 +44,7 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.WEDDINGINVITEHOME);
+                    AppLovinProvider.instance.showInterstitial((){});
                   },
                   child: cards_template(
                       Color(0xFF03BAE2),
@@ -61,6 +65,8 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.GRADUATIONPARTYHOME);
+                    AppLovinProvider.instance.showInterstitial((){});
+
                   },
                   child: cards_template(
                       Color(0xFFBF04C3),
@@ -76,6 +82,8 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.PARTYCARDHOME);
+                    AppLovinProvider.instance.showInterstitial((){});
+
                   },
                   child: cards_template(
                       Color(0xFF0377E2),
@@ -86,6 +94,8 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.ANNIVERSARYINVITATION);
+                    AppLovinProvider.instance.showInterstitial((){});
+
                   },
                   child: cards_template(
                       Color.fromARGB(255, 18, 3, 226),
@@ -93,16 +103,17 @@ class HomeView extends GetView<HomeViewCTL> {
                       "Anniversary Card",
                       AppImages.anniversary),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    // Get.toNamed(Routes.WEBSCRAPER);
-                  },
-                  child: cards_template(
-                      Color(0xFF7E51FF),
-                      Color.fromARGB(255, 161, 134, 238),
-                      "Baby Shower",
-                      AppImages.baby_shower),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     Get.toNamed(Routes.);
+
+                //   },
+                //   child: cards_template(
+                //       Color(0xFF7E51FF),
+                //       Color.fromARGB(255, 161, 134, 238),
+                //       "Baby Shower",
+                //       AppImages.baby_shower),
+                // ),
                 // cards_template(
                 //     Color(0xFFC52323),
                 //     Color.fromARGB(255, 199, 92, 92),
@@ -116,6 +127,8 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.ENGAGEMENTCARD);
+                    AppLovinProvider.instance.showInterstitial((){});
+
                   },
                   child: cards_template(
                       Color(0xFF03E284),

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:widget_screenshot/widget_screenshot.dart';
@@ -63,11 +64,7 @@ class WeddingInviteController extends GetxController {
       return;
     } else {
       isOnTemplates.value = true;
-      Get.snackbar(
-        'Success!',
-        'Wedding invitation details submitted.',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      AppLovinProvider.instance.showInterstitial(() {});
     }
 
     // Handle successful form submission (replace with your desired action)

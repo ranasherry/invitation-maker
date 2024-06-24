@@ -8,6 +8,7 @@ import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template
 import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_4.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_5.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_6.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:widget_screenshot/widget_screenshot.dart';
@@ -221,6 +222,8 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
         child: Column(
           children: [
             // Husband Name Input
+            AppLovinProvider.instance.ShowBannerWidget(),
+
             verticalSpace(SizeConfig.blockSizeVertical * 2),
             Container(
               decoration: BoxDecoration(

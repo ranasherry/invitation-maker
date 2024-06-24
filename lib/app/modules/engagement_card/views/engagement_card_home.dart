@@ -8,6 +8,7 @@ import 'package:invitation_maker/app/modules/engagement_card/views/e_template_3.
 import 'package:invitation_maker/app/modules/engagement_card/views/e_template_4.dart';
 import 'package:invitation_maker/app/modules/engagement_card/views/e_template_5.dart';
 import 'package:invitation_maker/app/modules/engagement_card/views/e_template_6.dart';
+import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:widget_screenshot/widget_screenshot.dart';
@@ -220,6 +221,8 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
+            AppLovinProvider.instance.ShowBannerWidget(),
+
             // Husband Name Input
             verticalSpace(SizeConfig.blockSizeVertical * 2),
             Container(
