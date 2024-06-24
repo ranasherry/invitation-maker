@@ -30,11 +30,15 @@ class GraduationPartyeHome extends GetView<GraduationPartyCTL> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Graduation party Maker',
-            style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 6,
-                fontWeight: FontWeight.bold),
+          title: Obx(
+            () => Text(
+              controller.isOnTemplates.value
+                  ? 'Graduation Party Cards'
+                  : 'Graduation party Maker',
+              style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 6,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           bottom: PreferredSize(
               child: Container(
@@ -88,8 +92,6 @@ class GraduationPartyeHome extends GetView<GraduationPartyCTL> {
                 child: Container(
                   child: Column(
                     children: [
-                     
-
                       Container(
                           height: SizeConfig.screenHeight * 0.7,
                           child: WidgetShot(
@@ -160,6 +162,7 @@ class GraduationPartyeHome extends GetView<GraduationPartyCTL> {
 
   Widget designSelector() {
     return Container(
+        padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3),
         height: SizeConfig.blockSizeVertical * 5,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -216,7 +219,7 @@ class GraduationPartyeHome extends GetView<GraduationPartyCTL> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-                      AppLovinProvider.instance.ShowBannerWidget(),
+            AppLovinProvider.instance.ShowBannerWidget(),
 
             // Groom Name Input
             verticalSpace(SizeConfig.blockSizeVertical * 2),

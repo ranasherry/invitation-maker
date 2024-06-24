@@ -30,11 +30,15 @@ class PartyCardHome extends GetView<partyCardCTL> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Party Card Maker',
-            style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 6,
-                fontWeight: FontWeight.bold),
+          title: Obx(
+            () => Text(
+              controller.isOnTemplates.value
+                  ? 'Party Cards'
+                  : 'Party Card Maker',
+              style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 6,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -159,6 +163,7 @@ class PartyCardHome extends GetView<partyCardCTL> {
 
   Widget designSelector() {
     return Container(
+        padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3),
         height: SizeConfig.blockSizeVertical * 5,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,

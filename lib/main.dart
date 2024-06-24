@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
             darkTheme: darkMode,
 
             debugShowCheckedModeBanner: false,
+            navigatorObservers: <NavigatorObserver>[observer],
 
             initialRoute: AppPages.INITIAL,
             getPages: AppPages.routes,

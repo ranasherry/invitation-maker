@@ -30,11 +30,15 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Wedding Invitation Maker',
-            style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 6,
-                fontWeight: FontWeight.bold),
+          title: Obx(
+            () => Text(
+              controller.isOnTemplates.value
+                  ? 'Wedding Invitation Cards'
+                  : "Wedding Invitation Maker",
+              style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 6,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           bottom: PreferredSize(
               child: Container(
@@ -158,6 +162,7 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
 
   Widget designSelector() {
     return Container(
+        padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3),
         height: SizeConfig.blockSizeVertical * 5,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,

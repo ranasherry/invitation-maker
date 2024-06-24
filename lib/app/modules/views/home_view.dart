@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/routes/app_pages.dart';
@@ -44,13 +46,10 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.WEDDINGINVITEHOME);
-                    AppLovinProvider.instance.showInterstitial((){});
+                    AppLovinProvider.instance.showInterstitial(() {});
                   },
-                  child: cards_template(
-                      Color(0xFF03BAE2),
-                      Color.fromARGB(255, 111, 199, 219),
-                      "Wedding Card",
-                      AppImages.wedding),
+                  child: cards_template(Color(0xFFFDA317), Color(0xFFFECE81),
+                      "Wedding", "Card", AppImages.wedding),
                 ),
                 // GestureDetector(
                 //   onTap: () {
@@ -65,13 +64,13 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.GRADUATIONPARTYHOME);
-                    AppLovinProvider.instance.showInterstitial((){});
-
+                    AppLovinProvider.instance.showInterstitial(() {});
                   },
                   child: cards_template(
                       Color(0xFFBF04C3),
                       Color.fromARGB(255, 226, 134, 228),
-                      "Graduation party",
+                      "Graduation",
+                      "party",
                       AppImages.graduation),
                 ),
                 // cards_template(
@@ -82,38 +81,30 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.PARTYCARDHOME);
-                    AppLovinProvider.instance.showInterstitial((){});
-
+                    AppLovinProvider.instance.showInterstitial(() {});
                   },
-                  child: cards_template(
-                      Color(0xFF0377E2),
-                      Color.fromARGB(255, 91, 155, 214),
-                      "Party Card",
-                      AppImages.party),
+                  child: cards_template(Color(0xFFE50296), Color(0xFFD057A8),
+                      "Party", "Card", AppImages.party),
                 ),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.ANNIVERSARYINVITATION);
-                    AppLovinProvider.instance.showInterstitial((){});
-
+                    AppLovinProvider.instance.showInterstitial(() {});
+                  },
+                  child: cards_template(Color(0xFFC52726), Color(0xFFC75756),
+                      "Anniversary", "Card", AppImages.anniversary),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.BABYSHOWER);
                   },
                   child: cards_template(
-                      Color.fromARGB(255, 18, 3, 226),
-                      Color.fromARGB(255, 91, 103, 214),
-                      "Anniversary Card",
-                      AppImages.anniversary),
+                      Color(0xFF7E51FF),
+                      Color.fromARGB(255, 161, 134, 238),
+                      "Baby",
+                      "Shower",
+                      AppImages.baby_shower),
                 ),
-                // GestureDetector(
-                //   onTap: () {
-                //     Get.toNamed(Routes.);
-
-                //   },
-                //   child: cards_template(
-                //       Color(0xFF7E51FF),
-                //       Color.fromARGB(255, 161, 134, 238),
-                //       "Baby Shower",
-                //       AppImages.baby_shower),
-                // ),
                 // cards_template(
                 //     Color(0xFFC52323),
                 //     Color.fromARGB(255, 199, 92, 92),
@@ -127,14 +118,10 @@ class HomeView extends GetView<HomeViewCTL> {
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.ENGAGEMENTCARD);
-                    AppLovinProvider.instance.showInterstitial((){});
-
+                    AppLovinProvider.instance.showInterstitial(() {});
                   },
-                  child: cards_template(
-                      Color(0xFF03E284),
-                      Color.fromARGB(255, 107, 219, 173),
-                      "Engagement Card",
-                      AppImages.engagement),
+                  child: cards_template(Color(0xFF04BDEB), Color(0xFF9FE6F6),
+                      "Engagement", "Card", AppImages.engagement),
                 ),
               ],
             ),
@@ -148,26 +135,81 @@ class HomeView extends GetView<HomeViewCTL> {
   //                     Color.fromARGB(255, 226, 134, 228),
 
   Container cards_template(
-      Color color1, Color color2, String text, String image) {
+      Color color1, Color color2, String text1, String text2, String image) {
     return Container(
       margin: EdgeInsets.all(SizeConfig.blockSizeHorizontal * 2),
       decoration: BoxDecoration(
         gradient: LinearGradient(
             colors: [color1, color2],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight),
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter),
         borderRadius: BorderRadius.circular(SizeConfig.blockSizeHorizontal * 2),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(text,
-              style: TextStyle(
-                  fontSize: SizeConfig.blockSizeHorizontal * 4,
-                  fontWeight: FontWeight.bold)),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                text1,
+                style: GoogleFonts.holtwoodOneSc(
+                  textStyle: TextStyle(
+                      fontSize: 60.sp,
+                      // fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                            // bottomLeft
+                            offset: Offset(-1.5, -1.5),
+                            color: Colors.black),
+                        Shadow(
+                            // bottomRight
+                            offset: Offset(1.5, -1.5),
+                            color: Colors.black),
+                        Shadow(
+                            // topRight
+                            offset: Offset(1.5, 1.5),
+                            color: Colors.black),
+                        Shadow(
+                            // topLeft
+                            offset: Offset(-1.5, 1.5),
+                            color: Colors.black),
+                      ]),
+                ),
+              ),
+              Text(
+                text2,
+                style: GoogleFonts.holtwoodOneSc(
+                  textStyle: TextStyle(
+                      fontSize: 60.sp,
+                      // fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                            // bottomLeft
+                            offset: Offset(-1.5, -1.5),
+                            color: Colors.black),
+                        Shadow(
+                            // bottomRight
+                            offset: Offset(1.5, -1.5),
+                            color: Colors.black),
+                        Shadow(
+                            // topRight
+                            offset: Offset(1.5, 1.5),
+                            color: Colors.black),
+                        Shadow(
+                            // topLeft
+                            offset: Offset(-1.5, 1.5),
+                            color: Colors.black),
+                      ]),
+                ),
+              ),
+            ],
+          ),
           Image.asset(
             image,
-            // scale: 1.33,
+            scale: 3,
           )
         ],
       ),

@@ -30,11 +30,15 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Engagement Card Maker',
-            style: TextStyle(
-                fontSize: SizeConfig.blockSizeHorizontal * 6,
-                fontWeight: FontWeight.bold),
+          title: Obx(
+            () => Text(
+              controller.isOnTemplates.value
+                  ? 'Engagement Cards'
+                  : 'Engagement Card Maker',
+              style: TextStyle(
+                  fontSize: SizeConfig.blockSizeHorizontal * 6,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
           centerTitle: true,
           bottom: PreferredSize(
@@ -165,6 +169,7 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
 
   Widget designSelector() {
     return Container(
+        padding: EdgeInsets.only(left: SizeConfig.blockSizeHorizontal * 3),
         height: SizeConfig.blockSizeVertical * 5,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,

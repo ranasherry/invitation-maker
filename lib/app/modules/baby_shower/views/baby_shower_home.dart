@@ -1,20 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/controller/anniversary_ctl.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_1.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_2.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_3.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_4.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_5.dart';
-import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_6.dart';
+import 'package:invitation_maker/app/modules/baby_shower/controller/baby_shower_card_ctl.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/b_template_1.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/b_template_2.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/b_template_3.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/b_template_4.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/b_template_5.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
 import 'package:widget_screenshot/widget_screenshot.dart';
 
-class AnniversaryHomeView extends GetView<AnniversaryCTL> {
-  const AnniversaryHomeView({Key? key}) : super(key: key);
+class BabyShowerHome extends GetView<BabyShowerCTL> {
+  const BabyShowerHome({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -33,8 +32,8 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
           title: Obx(
             () => Text(
               controller.isOnTemplates.value
-                  ? 'Anniversart Cards'
-                  : 'Anniversary Card Maker',
+                  ? 'Baby Shower Cards'
+                  : 'Baby Shower Card Maker',
               style: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 6,
                   fontWeight: FontWeight.bold),
@@ -100,18 +99,18 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
                             child: Obx(() => IndexedStack(
                                   index: controller.selectedIndex.value,
                                   children: [
-                                    Anniversary_Template1(
+                                    babyShower_Template1(
                                         controller: controller),
-                                    Anniversary_Template2(
+                                    babyShower_Template2(
                                         controller: controller),
-                                    Anniversary_Template3(
+                                    babyShower_Template3(
                                         controller: controller),
-                                    Anniversary_Template4(
+                                    babyShower_Template4(
                                         controller: controller),
-                                    Anniversary_Template5(
+                                    babyShower_Template5(
                                         controller: controller),
-                                    Anniversary_Template6(
-                                        controller: controller),
+                                    // Party_Template5(controller: controller),
+                                    // Party_Template6(controller: controller),
                                   ],
                                 )),
                           )),
@@ -226,9 +225,8 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            // Husband Name Input
             AppLovinProvider.instance.ShowBannerWidget(),
-
+            // Person Name Input
             verticalSpace(SizeConfig.blockSizeVertical * 2),
             Container(
               decoration: BoxDecoration(
@@ -244,12 +242,12 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
                 ],
               ),
               child: TextFormField(
-                controller: controller.husbandNameTextController,
+                controller: controller.NameTextController,
                 cursorColor: Theme.of(context).colorScheme.primary,
                 decoration: InputDecoration(
-                  labelText: 'Husband Name',
+                  labelText: 'Name',
                   labelStyle: TextStyle(color: Colors.grey),
-                  hintText: 'Enter the Husband name',
+                  hintText: 'Enter the Mother name',
                   hintStyle: TextStyle(color: Colors.grey.shade400),
                   fillColor: Theme.of(context).colorScheme.secondary,
                   filled: true,
@@ -276,114 +274,9 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
                   ),
                 ),
                 validator: (value) =>
-                    value!.isEmpty ? 'Please enter the Husband name' : null,
+                    value!.isEmpty ? 'Please enter the mother name' : null,
               ),
             ),
-            SizedBox(height: 20),
-
-            // Bride Name Input
-            Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(SizeConfig.blockSizeHorizontal * 4),
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).colorScheme.shadow, // Shadow color
-                    spreadRadius: 2, // Spread radius
-                    blurRadius: 10, // Blur radius
-                    offset: Offset(0, 5), // Offset in x and y direction
-                  ),
-                ],
-              ),
-              child: TextFormField(
-                controller: controller.wifeNameTextController,
-                decoration: InputDecoration(
-                  labelText: 'Wife Name',
-                  labelStyle: TextStyle(color: Colors.grey),
-                  hintText: 'Enter the Wife name',
-                  hintStyle: TextStyle(color: Colors.grey.shade400),
-                  fillColor: Theme.of(context).colorScheme.secondary,
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          SizeConfig.blockSizeHorizontal * 4),
-                      borderSide: BorderSide.none
-                      // borderSide: BorderSide(
-                      //   color: Color(0xFF0095B0), // Border color
-                      //   width: 1.0, // Border width
-                      // ),
-                      ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                        SizeConfig.blockSizeHorizontal * 8),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primary,
-                      // Color(0xFF0095B0), // Border color when focused
-                      width: 1.0, // Border width when focused
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                validator: (value) =>
-                    value!.isEmpty ? 'Please enter the Wife name' : null,
-              ),
-            ),
-
-            SizedBox(height: 20),
-
-            // Anniversary Date
-            Container(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.circular(SizeConfig.blockSizeHorizontal * 4),
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).colorScheme.shadow, // Shadow color
-                    spreadRadius: 2, // Spread radius
-                    blurRadius: 10, // Blur radius
-                    offset: Offset(0, 5), // Offset in x and y direction
-                  ),
-                ],
-              ),
-              child: TextFormField(
-                controller: controller.marriagedateTextController,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  labelText: 'Marriage Duration',
-                  labelStyle: TextStyle(color: Colors.grey),
-                  hintText: 'Enter years of marriage',
-                  hintStyle: TextStyle(color: Colors.grey.shade400),
-                  fillColor: Theme.of(context).colorScheme.secondary,
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(
-                          SizeConfig.blockSizeHorizontal * 4),
-                      borderSide: BorderSide.none
-                      // borderSide: BorderSide(
-                      //   color: Color(0xFF0095B0), // Border color
-                      //   width: 1.0, // Border width
-                      // ),
-                      ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                        SizeConfig.blockSizeHorizontal * 8),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primary,
-                      // Color(0xFF0095B0), // Border color when focused
-                      width: 1.0, // Border width when focused
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-                validator: (value) =>
-                    value!.isEmpty ? 'Please enter the marriage date' : null,
-              ),
-            ),
-
             SizedBox(height: 20),
 
             // Contact Number Input

@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/binding/anniversary_binding.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/views/anniversary_homeview.dart';
+import 'package:invitation_maker/app/modules/baby_shower/binding/baby_shower_binding.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/baby_shower_home.dart';
 import 'package:invitation_maker/app/modules/binding/home_view_binding.dart';
 import 'package:invitation_maker/app/modules/birthday_invite/binding/birthday_invite_binding.dart';
 import 'package:invitation_maker/app/modules/birthday_invite/views/birthday_invite_home.dart';
@@ -66,6 +68,12 @@ class AppPages {
       page: () => SplashScreen(),
       binding: SplashBinding(),
     ),
+    GetPage(
+      name: _Paths.BABYSHOWER,
+      page: () => BabyShowerHome(),
+      binding: babyShowerBinding(),
+    ),
+
     // GetPage(
     //   name: _Paths.WEBSCRAPER,
     //   page: () => WebScraper(),
