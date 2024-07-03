@@ -63,7 +63,7 @@ class _wedding_Template5State extends State<Wedding_Template5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE7EBFA),
+      // backgroundColor: Color(0xFFE7EBFA),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -93,10 +93,12 @@ class _wedding_Template5State extends State<Wedding_Template5> {
                     fontWeight: FontWeight.bold),
               ),
               verticalSpace(SizeConfig.blockSizeVertical * 3),
-              Text(
-                groomName,
-                style: mainText,
-              ),
+              Text(groomName,
+                  style: GoogleFonts.aBeeZee(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
               Text(
                 "&",
@@ -106,10 +108,12 @@ class _wedding_Template5State extends State<Wedding_Template5> {
                     fontWeight: FontWeight.bold),
               ),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                brideName,
-                style: mainText,
-              ),
+              Text(brideName,
+                  style: GoogleFonts.aBeeZee(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
               verticalSpace(SizeConfig.blockSizeVertical * 4.2),
               Text(
                 MonthName,

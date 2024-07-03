@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/controller/wedding_invite_ctl.dart';
 import 'package:invitation_maker/app/utills/images.dart';
@@ -25,7 +26,7 @@ class _Wedding_Template1State extends State<Wedding_Template1> {
   String contact = "";
 
   TextStyle mainText = TextStyle(
-      color: Colors.green, fontSize: 60.sp, fontWeight: FontWeight.bold);
+      color: Color(0xFF713F15), fontSize: 60.sp, fontWeight: FontWeight.bold);
 
   @override
   void initState() {
@@ -62,7 +63,7 @@ class _Wedding_Template1State extends State<Wedding_Template1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE7EBFA),
+      // backgroundColor: Color(0xFFE7EBFA),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -71,32 +72,44 @@ class _Wedding_Template1State extends State<Wedding_Template1> {
               height: SizeConfig.screenHeight,
               child: CachedNetworkImage(
                 imageUrl:
-                    "https://firebasestorage.googleapis.com/v0/b/ai-slide-generator.appspot.com/o/cards%2FFrame%2011.png?alt=media&token=0741b55a-fc7c-4aac-9036-71a706cb6104",
+                    "https://firebasestorage.googleapis.com/v0/b/wedding-invitation-utility.appspot.com/o/weddingCards%2FGroup%20269.png?alt=media&token=f20d46aa-cb6b-4eaa-8c28-e71e389dad90",
                 errorWidget: (context, url, error) {
                   return Container(child: Image.asset(AppImages.wedding));
                 },
               )),
           Column(
             children: [
-              verticalSpace(SizeConfig.blockSizeVertical * 20),
+              verticalSpace(SizeConfig.blockSizeVertical * 22.5),
               Text(
                 groomName,
-                style: mainText,
+                style: GoogleFonts.italianno(
+                    textStyle: TextStyle(
+                        fontSize: 120.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF713F15))),
               ),
+              // verticalSpace(SizeConfig.blockSizeVertical * 1),
+              Text("&",
+                  style: GoogleFonts.charmonman(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFF713F15)))),
+              // verticalSpace(SizeConfig.blockSizeVertical * 1),
+              Text(brideName,
+                  style: GoogleFonts.italianno(
+                      textStyle: TextStyle(
+                          fontSize: 120.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF713F15)))),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                "&",
-                style: mainText,
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                brideName,
-                style: mainText,
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 4.2),
               Text(
                 MonthName,
-                style: mainText,
+                style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                        fontSize: 60.sp,
+                        // fontWeight: FontWeight.bold,
+                        color: Color(0xFF713F15))),
               ),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
               Padding(
@@ -107,7 +120,11 @@ class _Wedding_Template1State extends State<Wedding_Template1> {
                   children: [
                     Text(
                       day,
-                      style: mainText,
+                      style: GoogleFonts.roboto(
+                          textStyle: TextStyle(
+                              fontSize: 60.sp,
+                              // fontWeight: FontWeight.bold,
+                              color: Color(0xFF713F15))),
                     ),
                     Spacer(),
                     Padding(
@@ -115,13 +132,21 @@ class _Wedding_Template1State extends State<Wedding_Template1> {
                           left: SizeConfig.blockSizeHorizontal * 2),
                       child: Text(
                         date,
-                        style: mainText,
+                        style: GoogleFonts.roboto(
+                            textStyle: TextStyle(
+                                fontSize: 60.sp,
+                                // fontWeight: FontWeight.bold,
+                                color: Color(0xFF713F15))),
                       ),
                     ),
                     Spacer(),
                     Text(
                       time,
-                      style: mainText,
+                      style: GoogleFonts.roboto(
+                          textStyle: TextStyle(
+                              fontSize: 60.sp,
+                              // fontWeight: FontWeight.bold,
+                              color: Color(0xFF713F15))),
                     ),
                   ],
                 ),
@@ -129,17 +154,29 @@ class _Wedding_Template1State extends State<Wedding_Template1> {
               verticalSpace(SizeConfig.blockSizeVertical * 0.5),
               Text(
                 year,
-                style: mainText,
+                style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                        fontSize: 60.sp,
+                        // fontWeight: FontWeight.bold,
+                        color: Color(0xFF713F15))),
               ),
-              verticalSpace(SizeConfig.blockSizeVertical * 1.5),
+              verticalSpace(SizeConfig.blockSizeVertical * 1),
               Text(
                 address,
-                style: mainText,
+                style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                        fontSize: 60.sp,
+                        // fontWeight: FontWeight.bold,
+                        color: Color(0xFF713F15))),
               ),
-              verticalSpace(SizeConfig.blockSizeVertical * 5),
+              verticalSpace(SizeConfig.blockSizeVertical * 2),
               Text(
                 contact,
-                style: mainText,
+                style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                        fontSize: 60.sp,
+                        // fontWeight: FontWeight.bold,
+                        color: Color(0xFF713F15))),
               ),
             ],
           )

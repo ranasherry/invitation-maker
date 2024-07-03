@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/modules/engagement_card/controller/engagement_card_ctl.dart';
 import 'package:invitation_maker/app/modules/engagement_card/views/e_template_1.dart';
 import 'package:invitation_maker/app/modules/engagement_card/views/e_template_2.dart';
@@ -41,21 +42,23 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
             ),
           ),
           centerTitle: true,
-          bottom: PreferredSize(
-              child: Container(
-                margin: EdgeInsets.only(
-                    right: SizeConfig.blockSizeHorizontal * 3,
-                    left: SizeConfig.blockSizeHorizontal * 3),
-                color: Theme.of(context).colorScheme.primary,
-                height: 1.5,
-              ),
-              preferredSize: Size.fromHeight(6.0)),
+          // bottom: PreferredSize(
+          //     child: Container(
+          //       margin: EdgeInsets.only(
+          //           right: SizeConfig.blockSizeHorizontal * 3,
+          //           left: SizeConfig.blockSizeHorizontal * 3),
+          //       color: Theme.of(context).colorScheme.primary,
+          //       height: 1.5,
+          //     ),
+          //     preferredSize: Size.fromHeight(6.0)),
 
           leading: GestureDetector(
               onTap: () {
                 if (controller.isOnTemplates.value) {
                   controller.isOnTemplates.value = false;
                 } else {
+                  HomeViewCTL homeViewCtl = Get.find();
+                  homeViewCtl.incrementFeedbackCount();
                   print("Back");
                   Get.back();
                 }
@@ -68,7 +71,7 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
         floatingActionButton: Obx(() => controller.isOnTemplates.value
             ? Container()
             : FloatingActionButton.extended(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.pinkAccent,
                 onPressed: () {
                   // Perform validation before submission
 
@@ -126,7 +129,10 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
                           width: SizeConfig.blockSizeHorizontal * 40,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.indigoAccent, Colors.indigo],
+                                  colors: [
+                                    Theme.of(context).colorScheme.onSecondary,
+                                    Theme.of(context).colorScheme.onPrimary
+                                  ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter),
                               // color: Colors.indigo,
@@ -452,10 +458,10 @@ class engagementCardHomeView extends GetView<engagementCardCTL> {
                 height: SizeConfig.blockSizeVertical * 6,
                 width: SizeConfig.blockSizeHorizontal * 60,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.indigo, Colors.indigoAccent.shade200],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
+                    gradient: LinearGradient(colors: [
+                      Theme.of(context).colorScheme.onSecondary,
+                      Theme.of(context).colorScheme.onPrimary
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                     // color: Colors.indigo,
                     borderRadius: BorderRadius.circular(
                         SizeConfig.blockSizeHorizontal * 6)),

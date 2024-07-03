@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
@@ -18,21 +21,41 @@ class HomeView extends GetView<HomeViewCTL> {
       appBar: AppBar(
         title: Text(
           "Invitation Maker",
-          style: TextStyle(
-              fontSize: SizeConfig.blockSizeHorizontal * 5,
-              fontWeight: FontWeight.bold),
+          style: GoogleFonts.playfairDisplay(
+              textStyle: TextStyle(
+            fontSize: 80.sp,
+            // fontWeight: FontWeight.bold,
+          )),
+          // style: TextStyle(
+          //     fontSize: SizeConfig.blockSizeHorizontal * 5,
+          //     fontWeight: FontWeight.bold),
         ),
         automaticallyImplyLeading: false,
+        // leading: GestureDetector(
+        //     onTap: () {
+        //       controller.ShowFeedbackBottomSheet();
+        //     },
+        //     child: Icon(Icons.settings)),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: SizeConfig.blockSizeHorizontal * 2),
+            child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.SETTINGSVIEW);
+                },
+                child: Icon(Icons.settings)),
+          )
+        ],
         centerTitle: true,
-        bottom: PreferredSize(
-            child: Container(
-              margin: EdgeInsets.only(
-                  right: SizeConfig.blockSizeHorizontal * 3,
-                  left: SizeConfig.blockSizeHorizontal * 3),
-              color: Theme.of(context).colorScheme.primary,
-              height: 1.5,
-            ),
-            preferredSize: Size.fromHeight(6.0)),
+        // bottom: PreferredSize(
+        //     child: Container(
+        //       margin: EdgeInsets.only(
+        //           right: SizeConfig.blockSizeHorizontal * 3,
+        //           left: SizeConfig.blockSizeHorizontal * 3),
+        //       color: Theme.of(context).colorScheme.primary,
+        //       height: 1.5,
+        //     ),
+        //     preferredSize: Size.fromHeight(6.0)),
       ),
       body: Column(
         children: [
@@ -51,16 +74,13 @@ class HomeView extends GetView<HomeViewCTL> {
                   child: cards_template(Color(0xFFFDA317), Color(0xFFFECE81),
                       "Wedding", "Card", AppImages.wedding),
                 ),
-                // GestureDetector(
-                //   onTap: () {
-                //     Get.toNamed(Routes.BIRTHDAYINVITEHOME);
-                //   },
-                //   child: cards_template(
-                //       Color(0xFFE20396),
-                //       Color.fromARGB(255, 209, 90, 169),
-                //       "Birthday Card",
-                //       AppImages.birthday),
-                // ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.BIRTHDAYINVITEHOME);
+                  },
+                  child: cards_template(Color(0xFFFF378B), Color(0xFFF4AEBF),
+                      "Birthday", "Card", AppImages.birthday),
+                ),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.GRADUATIONPARTYHOME);
@@ -73,17 +93,23 @@ class HomeView extends GetView<HomeViewCTL> {
                       "party",
                       AppImages.graduation),
                 ),
-                // cards_template(
-                //     Color(0xFFFFA217),
-                //     Color.fromARGB(255, 255, 209, 139),
-                //     "Announcement",
-                //     AppImages.graduation_announcement),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.GRADUATIONANNOUNCEMENT);
+                  },
+                  child: cards_template(
+                      Color.fromARGB(255, 71, 216, 76),
+                      Color.fromARGB(255, 113, 209, 111),
+                      "Graduation",
+                      "Announcement",
+                      AppImages.graduation_announcement),
+                ),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.PARTYCARDHOME);
                     AppLovinProvider.instance.showInterstitial(() {});
                   },
-                  child: cards_template(Color(0xFFE50296), Color(0xFFD057A8),
+                  child: cards_template(Color(0xFFD06810), Color(0xFFCA986F),
                       "Party", "Card", AppImages.party),
                 ),
                 GestureDetector(
@@ -99,29 +125,41 @@ class HomeView extends GetView<HomeViewCTL> {
                     Get.toNamed(Routes.BABYSHOWER);
                   },
                   child: cards_template(
-                      Color(0xFF7E51FF),
-                      Color.fromARGB(255, 161, 134, 238),
+                      Color.fromARGB(255, 0, 201, 252),
+                      Color.fromARGB(255, 140, 223, 241),
                       "Baby",
                       "Shower",
                       AppImages.baby_shower),
                 ),
-                // cards_template(
-                //     Color(0xFFC52323),
-                //     Color.fromARGB(255, 199, 92, 92),
-                //     "Holidays",
-                //     AppImages.holidays),
-                // cards_template(
-                //     Color(0xFF03BAE2),
-                //     Color.fromARGB(255, 125, 215, 235),
-                //     "General Card",
-                //     AppImages.general),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.HOLIDAYCARD);
+                  },
+                  child: cards_template(
+                      Color.fromARGB(255, 236, 240, 14),
+                      Color.fromARGB(255, 228, 240, 102),
+                      "Holidays",
+                      "Card",
+                      AppImages.holidays),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(Routes.GENERALCARD);
+                  },
+                  child: cards_template(Color(0xFFE50296), Color(0xFFD057A8),
+                      "General", "Card", AppImages.general),
+                ),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(Routes.ENGAGEMENTCARD);
                     AppLovinProvider.instance.showInterstitial(() {});
                   },
-                  child: cards_template(Color(0xFF04BDEB), Color(0xFF9FE6F6),
-                      "Engagement", "Card", AppImages.engagement),
+                  child: cards_template(
+                      Color(0xFF7E51FF),
+                      Color.fromARGB(255, 161, 134, 238),
+                      "Engagement",
+                      "Card",
+                      AppImages.engagement),
                 ),
               ],
             ),
@@ -145,72 +183,82 @@ class HomeView extends GetView<HomeViewCTL> {
             end: Alignment.bottomCenter),
         borderRadius: BorderRadius.circular(SizeConfig.blockSizeHorizontal * 2),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: Stack(
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                text1,
-                style: GoogleFonts.holtwoodOneSc(
-                  textStyle: TextStyle(
-                      fontSize: 60.sp,
-                      // fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                            // bottomLeft
-                            offset: Offset(-1.5, -1.5),
-                            color: Colors.black),
-                        Shadow(
-                            // bottomRight
-                            offset: Offset(1.5, -1.5),
-                            color: Colors.black),
-                        Shadow(
-                            // topRight
-                            offset: Offset(1.5, 1.5),
-                            color: Colors.black),
-                        Shadow(
-                            // topLeft
-                            offset: Offset(-1.5, 1.5),
-                            color: Colors.black),
-                      ]),
-                ),
-              ),
-              Text(
-                text2,
-                style: GoogleFonts.holtwoodOneSc(
-                  textStyle: TextStyle(
-                      fontSize: 60.sp,
-                      // fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      shadows: [
-                        Shadow(
-                            // bottomLeft
-                            offset: Offset(-1.5, -1.5),
-                            color: Colors.black),
-                        Shadow(
-                            // bottomRight
-                            offset: Offset(1.5, -1.5),
-                            color: Colors.black),
-                        Shadow(
-                            // topRight
-                            offset: Offset(1.5, 1.5),
-                            color: Colors.black),
-                        Shadow(
-                            // topLeft
-                            offset: Offset(-1.5, 1.5),
-                            color: Colors.black),
-                      ]),
-                ),
-              ),
-            ],
+          Container(
+            child:
+                Opacity(opacity: 0.5, child: SvgPicture.asset(AppImages.layer)),
           ),
-          Image.asset(
-            image,
-            scale: 3,
-          )
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      text1,
+                      style: GoogleFonts.holtwoodOneSc(
+                        textStyle: TextStyle(
+                            fontSize: 60.sp,
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                  // bottomLeft
+                                  offset: Offset(-1.5, -1.5),
+                                  color: Colors.black),
+                              Shadow(
+                                  // bottomRight
+                                  offset: Offset(1.5, -1.5),
+                                  color: Colors.black),
+                              Shadow(
+                                  // topRight
+                                  offset: Offset(1.5, 1.5),
+                                  color: Colors.black),
+                              Shadow(
+                                  // topLeft
+                                  offset: Offset(-1.5, 1.5),
+                                  color: Colors.black),
+                            ]),
+                      ),
+                    ),
+                    Text(
+                      text2,
+                      style: GoogleFonts.holtwoodOneSc(
+                        textStyle: TextStyle(
+                            fontSize: 55.sp,
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                  // bottomLeft
+                                  offset: Offset(-1.5, -1.5),
+                                  color: Colors.black),
+                              Shadow(
+                                  // bottomRight
+                                  offset: Offset(1.5, -1.5),
+                                  color: Colors.black),
+                              Shadow(
+                                  // topRight
+                                  offset: Offset(1.5, 1.5),
+                                  color: Colors.black),
+                              Shadow(
+                                  // topLeft
+                                  offset: Offset(-1.5, 1.5),
+                                  color: Colors.black),
+                            ]),
+                      ),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  image,
+                  scale: 3,
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

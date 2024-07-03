@@ -11,4 +11,11 @@ class AppImages {
   static const general = "assets/images/general.png";
   static const engagement = "assets/images/engagement.png";
   static const splash = "assets/images/splash.png";
+  static const feedback = "assets/images/feedback.png";
+
+  // SVG
+
+  static const background = "assets/svg/background.svg";
+  static const layer = "assets/svg/layer.svg";
+  static const splashrive = "assets/rive/splash.riv";
 }

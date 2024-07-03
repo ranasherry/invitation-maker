@@ -78,7 +78,7 @@ class _Wedding_Template3State extends State<Wedding_Template3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE7EBFA),
+      // backgroundColor: Color(0xFFE7EBFA),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -87,86 +87,93 @@ class _Wedding_Template3State extends State<Wedding_Template3> {
               height: SizeConfig.screenHeight,
               child: CachedNetworkImage(
                 imageUrl:
-                    "https://firebasestorage.googleapis.com/v0/b/ai-slide-generator.appspot.com/o/cards%2FFrame%2024.png?alt=media&token=6cdf8174-0028-4f27-898b-1f0613330bfc",
+                    "https://firebasestorage.googleapis.com/v0/b/wedding-invitation-utility.appspot.com/o/weddingCards%2FGroup%20267.png?alt=media&token=51daa6a8-0a28-495d-9506-f4987ef8f05b",
                 errorWidget: (context, url, error) {
                   return Container(child: Image.asset(AppImages.wedding));
                 },
               )),
           Column(
             children: [
-              verticalSpace(SizeConfig.blockSizeVertical * 10),
-              Text(
-                "Save The Date",
-                style: GoogleFonts.caveat(
-                    fontSize: SizeConfig.blockSizeHorizontal * 9,
-                    color: Colors.white),
-              ),
-              Text(
-                "FOR THE WEDDING OF",
-                style: GoogleFonts.raleway(color: Colors.white),
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 5),
-              Text(
-                groomName,
-                style: mainText,
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                "&",
-                style: mainText,
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                brideName,
-                style: mainText,
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 4.2),
-              verticalSpace(SizeConfig.blockSizeVertical * 1),
+              verticalSpace(SizeConfig.blockSizeVertical * 25),
+              Text(groomName,
+                  style: GoogleFonts.italianno(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
+              // verticalSpace(SizeConfig.blockSizeVertical * 1),
+              Text("&",
+                  style: GoogleFonts.italianno(
+                      textStyle: TextStyle(
+                          fontSize: 60.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
+              // verticalSpace(SizeConfig.blockSizeVertical * 1),
+              Text(brideName,
+                  style: GoogleFonts.italianno(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
+              // verticalSpace(SizeConfig.blockSizeVertical * 4.2),
+              verticalSpace(SizeConfig.blockSizeVertical * 0),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.blockSizeHorizontal * 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      MonthName.substring(0, 3),
-                      style: mainText,
-                    ),
+                    Text(MonthName.substring(0, 3),
+                        style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                                fontSize: 60.sp,
+                                // fontWeight: FontWeight.bold,
+                                color: Color(0xFFF7DFB5)))),
 
                     // Spacer(),
                     Padding(
                       padding: EdgeInsets.only(
                           left: SizeConfig.blockSizeHorizontal * 1),
-                      child: Text(
-                        date,
-                        style: mainText,
-                      ),
+                      child: Text(date,
+                          style: GoogleFonts.inter(
+                              textStyle: TextStyle(
+                                  fontSize: 60.sp,
+                                  // fontWeight: FontWeight.bold,
+                                  color: Color(0xFFF7DFB5)))),
                     ),
                     horizontalSpace(SizeConfig.blockSizeHorizontal * 1),
                     // Spacer(),
-                    Text(
-                      year,
-                      style: mainText,
-                    ),
+                    Text(year,
+                        style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                                fontSize: 60.sp,
+                                // fontWeight: FontWeight.bold,
+                                color: Color(0xFFF7DFB5)))),
                     horizontalSpace(SizeConfig.blockSizeHorizontal * 1),
-                    Text(
-                      "At ${time}",
-                      style: mainText,
-                    ),
+                    Text("At ${time}",
+                        style: GoogleFonts.inter(
+                            textStyle: TextStyle(
+                                fontSize: 60.sp,
+                                // fontWeight: FontWeight.bold,
+                                color: Color(0xFFF7DFB5)))),
                   ],
                 ),
               ),
-              verticalSpace(SizeConfig.blockSizeVertical * 0.5),
-              verticalSpace(SizeConfig.blockSizeVertical * 1.5),
-              Text(
-                address,
-                style: mainText,
-              ),
-              verticalSpace(SizeConfig.blockSizeVertical * 2),
+              // verticalSpace(SizeConfig.blockSizeVertical * 0.5),
+              verticalSpace(SizeConfig.blockSizeVertical * 1),
+              Text(address,
+                  style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                          fontSize: 60.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFF7DFB5)))),
+              verticalSpace(SizeConfig.blockSizeVertical * 1),
               Text("Contact: ${contact}",
-                  style: TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal * 3,
-                      color: Colors.white)),
+                  style: GoogleFonts.inter(
+                      textStyle: TextStyle(
+                          fontSize: 60.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFF7DFB5)))),
             ],
           )
         ],

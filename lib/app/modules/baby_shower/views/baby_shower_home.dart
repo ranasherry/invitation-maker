@@ -7,6 +7,8 @@ import 'package:invitation_maker/app/modules/baby_shower/views/b_template_2.dart
 import 'package:invitation_maker/app/modules/baby_shower/views/b_template_3.dart';
 import 'package:invitation_maker/app/modules/baby_shower/views/b_template_4.dart';
 import 'package:invitation_maker/app/modules/baby_shower/views/b_template_5.dart';
+import 'package:invitation_maker/app/modules/baby_shower/views/b_template_6.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
@@ -40,21 +42,23 @@ class BabyShowerHome extends GetView<BabyShowerCTL> {
             ),
           ),
           centerTitle: true,
-          bottom: PreferredSize(
-              child: Container(
-                margin: EdgeInsets.only(
-                    right: SizeConfig.blockSizeHorizontal * 3,
-                    left: SizeConfig.blockSizeHorizontal * 3),
-                color: Theme.of(context).colorScheme.primary,
-                height: 1.5,
-              ),
-              preferredSize: Size.fromHeight(6.0)),
+          // bottom: PreferredSize(
+          //     child: Container(
+          //       margin: EdgeInsets.only(
+          //           right: SizeConfig.blockSizeHorizontal * 3,
+          //           left: SizeConfig.blockSizeHorizontal * 3),
+          //       color: Theme.of(context).colorScheme.primary,
+          //       height: 1.5,
+          //     ),
+          //     preferredSize: Size.fromHeight(6.0)),
 
           leading: GestureDetector(
               onTap: () {
                 if (controller.isOnTemplates.value) {
                   controller.isOnTemplates.value = false;
                 } else {
+                  HomeViewCTL homeViewCtl = Get.find();
+                  homeViewCtl.incrementFeedbackCount();
                   print("Back");
                   Get.back();
                 }
@@ -67,7 +71,7 @@ class BabyShowerHome extends GetView<BabyShowerCTL> {
         floatingActionButton: Obx(() => controller.isOnTemplates.value
             ? Container()
             : FloatingActionButton.extended(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.pinkAccent,
                 onPressed: () {
                   // Perform validation before submission
 
@@ -109,8 +113,8 @@ class BabyShowerHome extends GetView<BabyShowerCTL> {
                                         controller: controller),
                                     babyShower_Template5(
                                         controller: controller),
-                                    // Party_Template5(controller: controller),
-                                    // Party_Template6(controller: controller),
+                                    babyShower_Template6(
+                                        controller: controller),
                                   ],
                                 )),
                           )),
@@ -125,7 +129,10 @@ class BabyShowerHome extends GetView<BabyShowerCTL> {
                           width: SizeConfig.blockSizeHorizontal * 40,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.indigoAccent, Colors.indigo],
+                                  colors: [
+                                    Theme.of(context).colorScheme.onSecondary,
+                                    Theme.of(context).colorScheme.onPrimary
+                                  ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter),
                               // color: Colors.indigo,
@@ -398,10 +405,10 @@ class BabyShowerHome extends GetView<BabyShowerCTL> {
                 height: SizeConfig.blockSizeVertical * 6,
                 width: SizeConfig.blockSizeHorizontal * 60,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.indigo, Colors.indigoAccent.shade200],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
+                    gradient: LinearGradient(colors: [
+                      Theme.of(context).colorScheme.onSecondary,
+                      Theme.of(context).colorScheme.onPrimary
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                     // color: Colors.indigo,
                     borderRadius: BorderRadius.circular(
                         SizeConfig.blockSizeHorizontal * 6)),

@@ -8,6 +8,7 @@ import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template
 import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_4.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_5.dart';
 import 'package:invitation_maker/app/modules/anniversary_invite/views/a_template_6.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/utills/size_config.dart';
 import 'package:omni_datetime_picker/omni_datetime_picker.dart';
@@ -33,7 +34,7 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
           title: Obx(
             () => Text(
               controller.isOnTemplates.value
-                  ? 'Anniversart Cards'
+                  ? 'Anniversary Cards'
                   : 'Anniversary Card Maker',
               style: TextStyle(
                   fontSize: SizeConfig.blockSizeHorizontal * 6,
@@ -41,21 +42,23 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
             ),
           ),
           centerTitle: true,
-          bottom: PreferredSize(
-              child: Container(
-                margin: EdgeInsets.only(
-                    right: SizeConfig.blockSizeHorizontal * 3,
-                    left: SizeConfig.blockSizeHorizontal * 3),
-                color: Theme.of(context).colorScheme.primary,
-                height: 1.5,
-              ),
-              preferredSize: Size.fromHeight(6.0)),
+          // bottom: PreferredSize(
+          //     child: Container(
+          //       margin: EdgeInsets.only(
+          //           right: SizeConfig.blockSizeHorizontal * 3,
+          //           left: SizeConfig.blockSizeHorizontal * 3),
+          //       color: Theme.of(context).colorScheme.primary,
+          //       height: 1.5,
+          //     ),
+          //     preferredSize: Size.fromHeight(6.0)),
 
           leading: GestureDetector(
               onTap: () {
                 if (controller.isOnTemplates.value) {
                   controller.isOnTemplates.value = false;
                 } else {
+                  HomeViewCTL homeViewCtl = Get.find();
+                  homeViewCtl.incrementFeedbackCount();
                   print("Back");
                   Get.back();
                 }
@@ -68,7 +71,7 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
         floatingActionButton: Obx(() => controller.isOnTemplates.value
             ? Container()
             : FloatingActionButton.extended(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.pinkAccent,
                 onPressed: () {
                   // Perform validation before submission
 
@@ -126,7 +129,10 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
                           width: SizeConfig.blockSizeHorizontal * 40,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.indigoAccent, Colors.indigo],
+                                  colors: [
+                                    Theme.of(context).colorScheme.onSecondary,
+                                    Theme.of(context).colorScheme.onPrimary
+                                  ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter),
                               // color: Colors.indigo,
@@ -505,10 +511,10 @@ class AnniversaryHomeView extends GetView<AnniversaryCTL> {
                 height: SizeConfig.blockSizeVertical * 6,
                 width: SizeConfig.blockSizeHorizontal * 60,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.indigo, Colors.indigoAccent.shade200],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
+                    gradient: LinearGradient(colors: [
+                      Theme.of(context).colorScheme.onSecondary,
+                      Theme.of(context).colorScheme.onPrimary
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                     // color: Colors.indigo,
                     borderRadius: BorderRadius.circular(
                         SizeConfig.blockSizeHorizontal * 6)),

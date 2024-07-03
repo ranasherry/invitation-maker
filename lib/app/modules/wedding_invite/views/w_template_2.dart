@@ -62,7 +62,7 @@ class _Wedding_Template2State extends State<Wedding_Template2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE7EBFA),
+      // backgroundColor: Color(0xFFE7EBFA),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -87,21 +87,27 @@ class _Wedding_Template2State extends State<Wedding_Template2> {
                 "WITH THEIR FAMILIES",
                 style: GoogleFonts.raleway(color: Color(0xFF3F6F9F)),
               ),
-              verticalSpace(SizeConfig.blockSizeVertical * 5),
-              Text(
-                groomName,
-                style: mainText,
-              ),
+              verticalSpace(SizeConfig.blockSizeVertical * 4),
+              Text(groomName,
+                  style: GoogleFonts.ibarraRealNova(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF3F6F9F)))),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                "&",
-                style: mainText,
-              ),
+              Text("&",
+                  style: GoogleFonts.charmonman(
+                      textStyle: TextStyle(
+                          fontSize: 80.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF3F6F9F)))),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                brideName,
-                style: mainText,
-              ),
+              Text(brideName,
+                  style: GoogleFonts.ibarraRealNova(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF3F6F9F)))),
               verticalSpace(SizeConfig.blockSizeVertical * 2.1),
               Text("INVITE YOU TO JOIN WEDDING",
                   style: GoogleFonts.raleway(

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -26,7 +27,7 @@ class BabyShowerCTL extends GetxController {
     "https://firebasestorage.googleapis.com/v0/b/wedding-invitation-utility.appspot.com/o/babyShower%2FGroup%20243.png?alt=media&token=154e6a80-2a16-46a5-95cd-ec3590b2d39b",
     "https://firebasestorage.googleapis.com/v0/b/wedding-invitation-utility.appspot.com/o/babyShower%2FGroup%20249.png?alt=media&token=ff28e799-59eb-4c94-a97f-fdf592dfd447",
     "https://firebasestorage.googleapis.com/v0/b/wedding-invitation-utility.appspot.com/o/babyShower%2FGroup%20250.png?alt=media&token=4197b0c5-2850-4229-a98c-0c784b3c3ab9",
-    "https://firebasestorage.googleapis.com/v0/b/ai-slide-generator.appspot.com/o/invitation_cards%2FGroup%20159.png?alt=media&token=ee758988-8491-4515-964a-65c2b1cc4df8",
+    "https://firebasestorage.googleapis.com/v0/b/wedding-invitation-utility.appspot.com/o/babyShower%2FGroup%20251.png?alt=media&token=a3186756-feec-4fc9-99bf-ef6fabf8d7ee",
   ];
 
   //? All Bool Entities Below

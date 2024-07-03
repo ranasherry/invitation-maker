@@ -4,9 +4,11 @@ import 'dart:math';
 import 'package:get/get.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:invitation_maker/app/routes/app_pages.dart';
+import 'package:rive/rive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashController extends GetxController {
+  late final StateMachineController? controller;
   //TODO: Implement HomeControlle
   bool isFirstTime = true;
   final prefs = SharedPreferences.getInstance();
@@ -21,6 +23,7 @@ class SplashController extends GetxController {
     super.onInit();
     AppLovinProvider.instance.init();
     // MetaAdsProvider.instance.initialize();
+
     Timer? timer;
     timer = Timer.periodic(Duration(milliseconds: 500), (_) {
       int n = Random().nextInt(10) + 5;
@@ -37,6 +40,21 @@ class SplashController extends GetxController {
     });
 
     // checkplatform();
+  }
+
+  void onRiveInit(Artboard artboard) {
+    controller =
+        StateMachineController.fromArtboard(artboard, 'State Machine 1');
+    if (controller != null) {
+      artboard.addController(controller!);
+    }
+  }
+
+  void disposeRiveController() {
+    // Implement any specific cleanup here, such as removing the controller from the artboard
+    if (controller != null) {
+      controller!.dispose();
+    }
   }
 
   // checkPermission() async {
@@ -62,7 +80,9 @@ class SplashController extends GetxController {
   }
 
   @override
-  void onClose() {}
+  void onClose() {
+    disposeRiveController();
+  }
 
   void setFirstTime(bool bool) {
     prefs.then((SharedPreferences pref) {
@@ -77,9 +97,9 @@ class SplashController extends GetxController {
 
       print("Is First Time from Init: $isFirstTime");
       if (isFirstTime) {
-        Get.toNamed(Routes.HOMEVIEW);
+        Get.toNamed(Routes.SPLASHSCREEN);
       } else {
-        Get.offNamed(Routes.HOMEVIEW);
+        Get.offNamed(Routes.SPLASHSCREEN);
       }
     });
   }

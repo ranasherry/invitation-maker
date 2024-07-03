@@ -63,7 +63,7 @@ class _Wedding_Template4State extends State<Wedding_Template4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE7EBFA),
+      // backgroundColor: Color(0xFFE7EBFA),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -79,11 +79,13 @@ class _Wedding_Template4State extends State<Wedding_Template4> {
               )),
           Column(
             children: [
-              verticalSpace(SizeConfig.blockSizeVertical * 16),
-              Text(
-                groomName,
-                style: mainText,
-              ),
+              verticalSpace(SizeConfig.blockSizeVertical * 13.5),
+              Text(groomName,
+                  style: GoogleFonts.italianno(
+                      textStyle: TextStyle(
+                          fontSize: 90.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
               Text(
                 "AND",
@@ -93,10 +95,12 @@ class _Wedding_Template4State extends State<Wedding_Template4> {
                     color: Color(0xFFC29409)),
               ),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                brideName,
-                style: mainText,
-              ),
+              Text(brideName,
+                  style: GoogleFonts.italianno(
+                      textStyle: TextStyle(
+                          fontSize: 90.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFFFFFFFF)))),
               verticalSpace(SizeConfig.blockSizeVertical * 2.1),
               Text("INVITE YOU TO JOIN IN THEIR",
                   style: GoogleFonts.raleway(
@@ -113,7 +117,7 @@ class _Wedding_Template4State extends State<Wedding_Template4> {
                 MonthName,
                 style: mainText,
               ),
-              verticalSpace(SizeConfig.blockSizeVertical * 1),
+              verticalSpace(SizeConfig.blockSizeVertical * 2.5),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: SizeConfig.blockSizeHorizontal * 0),
@@ -127,7 +131,7 @@ class _Wedding_Template4State extends State<Wedding_Template4> {
                     // Spacer(),
                     Padding(
                       padding: EdgeInsets.only(
-                          left: SizeConfig.blockSizeHorizontal * 6,
+                          left: SizeConfig.blockSizeHorizontal * 8,
                           right: SizeConfig.blockSizeHorizontal * 4),
                       child: Text(
                         date,

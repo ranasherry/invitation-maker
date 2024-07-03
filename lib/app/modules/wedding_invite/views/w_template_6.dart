@@ -62,7 +62,7 @@ class _Wedding_Template6State extends State<Wedding_Template6> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE7EBFA),
+      // backgroundColor: Color(0xFFE7EBFA),
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -78,16 +78,18 @@ class _Wedding_Template6State extends State<Wedding_Template6> {
               )),
           Column(
             children: [
-              verticalSpace(SizeConfig.blockSizeVertical * 15),
+              verticalSpace(SizeConfig.blockSizeVertical * 13),
               Text(
                 "SAVE THE DATE",
                 style: GoogleFonts.raleway(color: Color(0xFF31496A)),
               ),
               verticalSpace(SizeConfig.blockSizeVertical * 5),
-              Text(
-                groomName,
-                style: mainText,
-              ),
+              Text(groomName,
+                  style: GoogleFonts.greatVibes(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFF607EA0)))),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
               Text(
                 "&",
@@ -97,10 +99,12 @@ class _Wedding_Template6State extends State<Wedding_Template6> {
                     fontWeight: FontWeight.bold),
               ),
               verticalSpace(SizeConfig.blockSizeVertical * 1),
-              Text(
-                brideName,
-                style: mainText,
-              ),
+              Text(brideName,
+                  style: GoogleFonts.greatVibes(
+                      textStyle: TextStyle(
+                          fontSize: 100.sp,
+                          // fontWeight: FontWeight.bold,
+                          color: Color(0xFF607EA0)))),
               verticalSpace(SizeConfig.blockSizeVertical * 4.2),
               Text(
                 MonthName,

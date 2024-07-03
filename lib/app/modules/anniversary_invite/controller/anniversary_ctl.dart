@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/provider/app_lovin_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -66,6 +67,7 @@ class AnniversaryCTL extends GetxController {
       return;
     } else {
       isOnTemplates.value = true;
+     
       AppLovinProvider.instance.showInterstitial((){});
 
       // Get.snackbar(

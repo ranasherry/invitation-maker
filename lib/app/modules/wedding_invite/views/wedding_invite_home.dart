@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:invitation_maker/app/modules/controller/home_view_ctl.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/controller/wedding_invite_ctl.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/views/w_template_1.dart';
 import 'package:invitation_maker/app/modules/wedding_invite/views/w_template_2.dart';
@@ -40,15 +41,15 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          bottom: PreferredSize(
-              child: Container(
-                margin: EdgeInsets.only(
-                    right: SizeConfig.blockSizeHorizontal * 3,
-                    left: SizeConfig.blockSizeHorizontal * 3),
-                color: Theme.of(context).colorScheme.primary,
-                height: 1.5,
-              ),
-              preferredSize: Size.fromHeight(6.0)),
+          // bottom: PreferredSize(
+          //     child: Container(
+          //       margin: EdgeInsets.only(
+          //           right: SizeConfig.blockSizeHorizontal * 3,
+          //           left: SizeConfig.blockSizeHorizontal * 3),
+          //       color: Theme.of(context).colorScheme.primary,
+          //       height: 1.5,
+          //     ),
+          //     preferredSize: Size.fromHeight(6.0)),
 
           leading: GestureDetector(
               onTap: () {
@@ -56,6 +57,8 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
                   controller.isOnTemplates.value = false;
                 } else {
                   print("Back");
+                  HomeViewCTL homeViewCtl = Get.find();
+                  homeViewCtl.incrementFeedbackCount();
                   Get.back();
                 }
                 // Get.back();
@@ -67,7 +70,7 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
         floatingActionButton: Obx(() => controller.isOnTemplates.value
             ? Container()
             : FloatingActionButton.extended(
-                backgroundColor: Colors.green,
+                backgroundColor: Colors.pinkAccent,
                 onPressed: () {
                   // Perform validation before submission
 
@@ -119,7 +122,10 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
                           width: SizeConfig.blockSizeHorizontal * 40,
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.indigoAccent, Colors.indigo],
+                                  colors: [
+                                    Theme.of(context).colorScheme.onSecondary,
+                                    Theme.of(context).colorScheme.onPrimary
+                                  ],
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter),
                               // color: Colors.indigo,
@@ -443,10 +449,10 @@ class WeddingInviteHome extends GetView<WeddingInviteController> {
                 height: SizeConfig.blockSizeVertical * 6,
                 width: SizeConfig.blockSizeHorizontal * 60,
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Colors.indigo, Colors.indigoAccent.shade200],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
+                    gradient: LinearGradient(colors: [
+                      Theme.of(context).colorScheme.onSecondary,
+                      Theme.of(context).colorScheme.onPrimary
+                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                     // color: Colors.indigo,
                     borderRadius: BorderRadius.circular(
                         SizeConfig.blockSizeHorizontal * 6)),
