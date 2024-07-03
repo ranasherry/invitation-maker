@@ -65,8 +65,7 @@ class HomeViewCTL extends GetxController {
     // Firestore storage
     final feedbackCollection =
         FirebaseFirestore.instance.collection('feedback');
-    final feedbackDocRef =
-        await feedbackCollection.doc(FirestoreService().UserID);
+    final feedbackDocRef = await feedbackCollection.doc();
     feedbackDocRef.set({
       'message': message,
       'timestamp':
